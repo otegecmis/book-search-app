@@ -52,13 +52,61 @@
 		8B034AF22C81EABB0003D6A5 /* book-search-app */ = {
 			isa = PBXGroup;
 			children = (
+				8B034B072C81EC590003D6A5 /* Model */,
+				8B034B082C81EC680003D6A5 /* View */,
+				8B034B0A2C81EC6E0003D6A5 /* Controller */,
+				8B034B0C2C81EC850003D6A5 /* Manager */,
+				8B034B0B2C81EC790003D6A5 /* Utils */,
+				8B034B0D2C81EC900003D6A5 /* Support */,
+				8B034B012C81EABD0003D6A5 /* Info.plist */,
+			);
+			path = "book-search-app";
+			sourceTree = "<group>";
+		};
+		8B034B072C81EC590003D6A5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8B034B082C81EC680003D6A5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8B034B0A2C81EC6E0003D6A5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		8B034B0B2C81EC790003D6A5 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		8B034B0C2C81EC850003D6A5 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		8B034B0D2C81EC900003D6A5 /* Support */ = {
+			isa = PBXGroup;
+			children = (
 				8B034AF32C81EABB0003D6A5 /* AppDelegate.swift */,
 				8B034AF52C81EABB0003D6A5 /* SceneDelegate.swift */,
 				8B034AFC2C81EABD0003D6A5 /* Assets.xcassets */,
 				8B034AFE2C81EABD0003D6A5 /* LaunchScreen.storyboard */,
-				8B034B012C81EABD0003D6A5 /* Info.plist */,
 			);
-			path = "book-search-app";
+			path = Support;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
