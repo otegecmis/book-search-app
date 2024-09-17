@@ -1,6 +1,6 @@
 import UIKit
 
-class LikedController: UIViewController {
+final class FavoritesController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
@@ -8,6 +8,6 @@ class LikedController: UIViewController {
     
     func configureUI() {
         view.backgroundColor = .systemBackground
-        title = "Liked"
+        title = "Favorites"
     }
 }

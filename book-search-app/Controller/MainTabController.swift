@@ -11,9 +11,9 @@ class MainTabController: UITabBarController {
         view.backgroundColor = .systemBackground
         
         let search = templateNavigationController(title: "Search", image: UIImage(systemName: "magnifyingglass"), rootViewController: SearchController())
-        let liked = templateNavigationController(title: "Liked", image: UIImage(systemName: "heart"), rootViewController: LikedController())
+        let favorites = templateNavigationController(title: "Favorites", image: UIImage(systemName: "heart"), rootViewController: FavoritesController())
         
-        viewControllers = [search, liked]
+        viewControllers = [search, favorites]
     }
     
     func templateNavigationController(title: String, image: UIImage?, rootViewController: UIViewController) -> UINavigationController {

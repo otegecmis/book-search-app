@@ -1,6 +1,7 @@
 import UIKit
 
 final class SearchController: UIViewController {
+    // MARK: - Properties
     let logoImageView = UIImageView()
     let searchTextField = SearchTextField()
     let searchButton = ActionButton(backgroundColor: .systemRed, title: "Search")
@@ -12,6 +13,7 @@ final class SearchController: UIViewController {
     let containerView = UIView()
     var containerViewCenterYConstraint: NSLayoutConstraint!
     
+    // MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewController()
@@ -25,13 +27,10 @@ final class SearchController: UIViewController {
         self.title = nil
     }
     
+    // MARK: - Helpers
     func configureViewController() {
         view.backgroundColor = .systemBackground
         navigationController?.navigationBar.tintColor = .systemRed
-    }
-    
-    @objc func searchBook() {
-        print("DEBUG: searchBook()")
     }
     
     func configureUI() {
@@ -82,5 +81,71 @@ final class SearchController: UIViewController {
         
         searchTextField.delegate = self
         searchButton.addTarget(self, action: #selector(searchBook), for: .touchUpInside)
+    }
+    
+    // MARK: - Actions
+    @objc func searchBook() {
+        guard isIsbnEntered else {
+            // TODO: Add custom error message view.
+            print("Please enter a valid ISBN number to proceed with your search.")
+            return
+        }
+        
+        guard let isbn = searchTextField.text else { return }
+        let url = API_URL + "\(isbn)"
+        
+        APIService.shared.request(url, method: .get, parameters: nil, responseType: Book.self) { result in
+            switch result {
+            case .success(let book):
+                DispatchQueue.main.async {
+                    let bookController = BookController()
+                    bookController.book = book
+                    self.navigationController?.pushViewController(bookController, animated: true)
+                }
+            case .failure(let error):
+                // TODO: Add custom error message view.
+                print(error.localizedDescription)
+            }
+        }
+    }
+}
+
+// MARK: - UITextFieldDelegate
+extension SearchController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        searchBook()
+        return true
+    }
+}
+
+// MARK: - Keyboard Handling
+extension SearchController {
+    func createDismissKeyboardTapGesture() {
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
+    }
+    
+    func configureKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        let keyboardHeight = keyboardSize.height
+        
+        containerViewCenterYConstraint.constant = -keyboardHeight / 2
+        
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+        containerViewCenterYConstraint.constant = 0
+        
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
     }
 }
