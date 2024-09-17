@@ -46,7 +46,19 @@ final class BookController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func checkIfFavorite() {
-        print("DEBUG: checkIfFavorite()")
+        guard let favorite = self.book else { return }
+        
+        PersistenceManager.isFavorite(book: favorite) { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let isFavorite):
+                self.isFavorite = isFavorite
+            case .failure(let error):
+                // TODO: Create custom alert view.
+                print(error.rawValue)
+            }
+        }
     }
     
     func configureUI() {
@@ -84,7 +96,20 @@ final class BookController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // MARK: - Actions
     @objc func addFavoriteButtonTapped() {
-        print("DEBUG: addFavoriteButtonTapped()")
+        guard let favorite = self.book else { return }
+        let actionType: PersistenceActionType = isFavorite ? .remove : .add
+        
+        PersistenceManager.updateWith(favorite: favorite, actionType: actionType) { [weak self] err in
+            guard let self = self else { return }
+            guard let err = err else {
+                self.isFavorite.toggle()
+                NotificationCenter.default.post(name: NSNotification.Name("FavoritesUpdated"), object: nil)
+                return
+            }
+            
+            // TODO: Create custom alert view.
+            print(err.rawValue)
+        }
     }
 }
 
