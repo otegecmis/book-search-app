@@ -24,7 +24,6 @@
 		8BD8AD6C2C99CAAF003B880B /* ImageViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD8AD6B2C99CAAF003B880B /* ImageViews.swift */; };
 		8BD8AD702C99D084003B880B /* FavoritesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD8AD6F2C99D084003B880B /* FavoritesCell.swift */; };
 		8BD8AD722C99D0B2003B880B /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD8AD712C99D0B2003B880B /* PersistenceManager.swift */; };
-		8BD8AD742C99D0D6003B880B /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD8AD732C99D0D6003B880B /* ErrorMessage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,7 +45,6 @@
 		8BD8AD6B2C99CAAF003B880B /* ImageViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViews.swift; sourceTree = "<group>"; };
 		8BD8AD6F2C99D084003B880B /* FavoritesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCell.swift; sourceTree = "<group>"; };
 		8BD8AD712C99D0B2003B880B /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
-		8BD8AD732C99D0D6003B880B /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,7 +123,6 @@
 			isa = PBXGroup;
 			children = (
 				8BD8AD452C986A17003B880B /* Constants.swift */,
-				8BD8AD732C99D0D6003B880B /* ErrorMessage.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -246,7 +243,6 @@
 				8B034AF62C81EABB0003D6A5 /* SceneDelegate.swift in Sources */,
 				8BD8AD5A2C99C082003B880B /* Book.swift in Sources */,
 				8BD8AD462C986A17003B880B /* Constants.swift in Sources */,
-				8BD8AD742C99D0D6003B880B /* ErrorMessage.swift in Sources */,
 				8BD8AD4A2C986C35003B880B /* Textfields.swift in Sources */,
 				8BD8AD6A2C99CA54003B880B /* BookController.swift in Sources */,
 			);
