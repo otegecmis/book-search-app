@@ -1,9 +1,18 @@
 import Foundation
 
+
+// MARK: - PersistenceActionType
 enum PersistenceActionType {
     case add, remove
 }
 
+// MARK: - Error Messages
+enum ErrorMessage: String, Error {
+    case unableToFavorite = "An error occurred while trying to favorite this book."
+    case alreadyInFavorites = "This book is already in your favorites."
+}
+
+// MARK: - PersistenceManager
 enum PersistenceManager {
     
     // MARK: - Properties
