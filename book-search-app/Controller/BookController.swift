@@ -55,8 +55,7 @@ final class BookController: UIViewController, UITableViewDelegate, UITableViewDa
             case .success(let isFavorite):
                 self.isFavorite = isFavorite
             case .failure(let error):
-                // TODO: Create custom alert view.
-                print(error.rawValue)
+                self.presentAlertOnMainThread(title: "Error", message: error.rawValue, buttonTitle: "Ok")
             }
         }
     }
@@ -99,16 +98,15 @@ final class BookController: UIViewController, UITableViewDelegate, UITableViewDa
         guard let favorite = self.book else { return }
         let actionType: PersistenceActionType = isFavorite ? .remove : .add
         
-        PersistenceManager.updateWith(favorite: favorite, actionType: actionType) { [weak self] err in
+        PersistenceManager.updateWith(favorite: favorite, actionType: actionType) { [weak self] error in
             guard let self = self else { return }
-            guard let err = err else {
+            guard let error = error else {
                 self.isFavorite.toggle()
                 NotificationCenter.default.post(name: NSNotification.Name("FavoritesUpdated"), object: nil)
                 return
             }
             
-            // TODO: Create custom alert view.
-            print(err.rawValue)
+            self.presentAlertOnMainThread(title: "Error", message: error.rawValue, buttonTitle: "Ok")
         }
     }
 }
