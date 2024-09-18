@@ -6,7 +6,7 @@ class AlertViewController: UIViewController {
     let containerView = UIView()
     let titleLabel = TitleLabel(textAlignment: .center, fontSize: 20)
     let messageLabel = BodyLabel(textAlignment: .center)
-    let actionButton = ActionButton(backgroundColor: .systemPink, title: "Ok")
+    let actionButton = ActionButton(backgroundColor: .systemRed, title: "Ok")
     
     var alertTitle: String?
     var message: String?
