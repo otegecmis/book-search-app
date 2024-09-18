@@ -6,7 +6,7 @@ class FavoritesCell: UICollectionViewCell {
     static let reuseID = "FavoritesCell"
     let bookCoverImageView = BookCoverImageView(frame: .zero)
     
-    // MARK: - Lifecycles
+    // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()

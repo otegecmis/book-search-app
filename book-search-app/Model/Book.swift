@@ -1,6 +1,8 @@
 import Foundation
 
+// MARK: - Book Model
 struct Book: Codable, Hashable {
+    
     var id: String
     var title: String
     var author: String

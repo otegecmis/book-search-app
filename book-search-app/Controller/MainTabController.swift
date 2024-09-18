@@ -2,11 +2,13 @@ import UIKit
 
 class MainTabController: UITabBarController {
     
+    // MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewControllers()
     }
     
+    // MARK: - Helpers
     func configureViewControllers() {
         view.backgroundColor = .systemBackground
         
@@ -28,4 +30,10 @@ class MainTabController: UITabBarController {
         
         return nav
     }
+}
+
+@available(iOS 17.0, *)
+#Preview {
+    let mainTabController = MainTabController()
+    return mainTabController
 }

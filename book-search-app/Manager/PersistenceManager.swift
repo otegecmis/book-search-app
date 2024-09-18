@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - PersistenceActionType
 enum PersistenceActionType {
     case add, remove

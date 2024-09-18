@@ -1,6 +1,7 @@
 import UIKit
 
 final class SearchController: UIViewController {
+    
     // MARK: - Properties
     let logoImageView = UIImageView()
     let searchTextField = SearchTextField()
@@ -86,8 +87,7 @@ final class SearchController: UIViewController {
     // MARK: - Actions
     @objc func searchBook() {
         guard isIsbnEntered else {
-            // TODO: Add custom error message view.
-            print("Please enter a valid ISBN number to proceed with your search.")
+            self.presentAlertOnMainThread(title: "Error", message: "Please enter a valid ISBN number to proceed with your search.", buttonTitle: "Ok")
             return
         }
         
@@ -103,8 +103,7 @@ final class SearchController: UIViewController {
                     self.navigationController?.pushViewController(bookController, animated: true)
                 }
             case .failure(let error):
-                // TODO: Add custom error message view.
-                print(error.localizedDescription)
+                self.presentAlertOnMainThread(title: "Error", message: error.localizedDescription, buttonTitle: "Ok")
             }
         }
     }
