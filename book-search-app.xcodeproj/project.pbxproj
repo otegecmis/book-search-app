@@ -87,6 +87,7 @@
 				8B034B072C81EC590003D6A5 /* Model */,
 				8B034B082C81EC680003D6A5 /* View */,
 				8B034B0A2C81EC6E0003D6A5 /* Controller */,
+				8BD8AD7D2C9B079D003B880B /* Service */,
 				8B034B0C2C81EC850003D6A5 /* Manager */,
 				8B034B0B2C81EC790003D6A5 /* Utils */,
 				8B034B0D2C81EC900003D6A5 /* Support */,
@@ -139,7 +140,6 @@
 		8B034B0C2C81EC850003D6A5 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				8BD8AD5F2C99C50D003B880B /* APIService.swift */,
 				8BD8AD712C99D0B2003B880B /* PersistenceManager.swift */,
 			);
 			path = Manager;
@@ -170,6 +170,14 @@
 				8BD8AD772C99E74C003B880B /* AlertViewController.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		8BD8AD7D2C9B079D003B880B /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				8BD8AD5F2C99C50D003B880B /* APIService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
