@@ -1,6 +1,8 @@
 import UIKit
 
 class ActionButton: UIButton {
+    
+    // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -18,12 +20,13 @@ class ActionButton: UIButton {
         configure()
     }
     
+    // MARK: - Helpers
     private func configure() {
         translatesAutoresizingMaskIntoConstraints = false
         
-        layer.cornerRadius      = 10
+        layer.cornerRadius = 10
         setTitleColor(.white, for: .normal)
-        titleLabel?.font        = UIFont.preferredFont(forTextStyle: .headline)
+        titleLabel?.font = UIFont.preferredFont(forTextStyle: .headline)
     }
     
     func set(backgroundColor: UIColor, title: String) -> Void {

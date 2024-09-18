@@ -2,15 +2,19 @@ import UIKit
 import Alamofire
 
 class APIService {
+    
+    // MARK: - Properties
     static let shared = APIService()
     
     private let session: Session
     private let cache = NSCache<NSString, UIImage>()
     
+    // MARK: - Initializers
     private init() {
         self.session = Session()
     }
     
+    // MARK: - Helpers
     func request<T: Decodable>(_ url: String, method: HTTPMethod, parameters: Parameters?, responseType: T.Type, completion: @escaping (Result<T, AFError>) -> Void) {
         session.request(url, method: method, parameters: parameters, encoding: JSONEncoding.default).validate().responseDecodable(of: T.self) { response in
             switch response.result {

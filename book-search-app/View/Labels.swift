@@ -1,9 +1,8 @@
 import UIKit
 
-// MARK: - BodyLabel
 class BodyLabel: UILabel {
     
-    // MARK: - Lifecycles
+    // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -31,10 +30,9 @@ class BodyLabel: UILabel {
     }
 }
 
-// MARK: - TitleLabel
 class TitleLabel: UILabel {
     
-    // MARK: - Lifecycles
+    // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
     }

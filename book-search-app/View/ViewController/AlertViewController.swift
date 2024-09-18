@@ -3,10 +3,10 @@ import UIKit
 class AlertViewController: UIViewController {
     
     // MARK: - Properties
-    let containerView   = UIView()
-    let titleLabel      = TitleLabel(textAlignment: .center, fontSize: 20)
-    let messageLabel    = BodyLabel(textAlignment: .center)
-    let actionButton    = ActionButton(backgroundColor: .systemPink, title: "Ok")
+    let containerView = UIView()
+    let titleLabel = TitleLabel(textAlignment: .center, fontSize: 20)
+    let messageLabel = BodyLabel(textAlignment: .center)
+    let actionButton = ActionButton(backgroundColor: .systemPink, title: "Ok")
     
     var alertTitle: String?
     var message: String?
@@ -15,7 +15,7 @@ class AlertViewController: UIViewController {
     
     var padding: CGFloat = 20
     
-    // MARK: - Lifecycles
+    // MARK: - Initializers
     init(title: String, message: String, buttonTitle: String) {
         super.init(nibName: nil, bundle: nil)
         
@@ -33,6 +33,7 @@ class AlertViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.75)
@@ -42,10 +43,10 @@ class AlertViewController: UIViewController {
     func configureContainerView() -> Void {
         view.addSubview(containerView)
         
-        containerView.backgroundColor       = .systemBackground
-        containerView.layer.cornerRadius    = 16
-        containerView.layer.borderWidth     = 2
-        containerView.layer.borderColor     = UIColor.white.cgColor
+        containerView.backgroundColor = .systemBackground
+        containerView.layer.cornerRadius = 16
+        containerView.layer.borderWidth = 2
+        containerView.layer.borderColor = UIColor.white.cgColor
         
         containerView.translatesAutoresizingMaskIntoConstraints = false
         

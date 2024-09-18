@@ -20,14 +20,15 @@ final class FavoritesController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(favoritesUpdated), name: NSNotification.Name("FavoritesUpdated"), object: nil)
     }
     
-    deinit {
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name("FavoritesUpdated"), object: nil)
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getFavorites()
         updateData(on: favorites)
+    }
+    
+    // MARK: - Deinitializers
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name("FavoritesUpdated"), object: nil)
     }
     
     // MARK: - Helpers

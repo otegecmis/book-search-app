@@ -1,6 +1,7 @@
 import UIKit
 
 final class SearchController: UIViewController {
+    
     // MARK: - Properties
     let logoImageView = UIImageView()
     let searchTextField = SearchTextField()

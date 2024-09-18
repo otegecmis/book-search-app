@@ -1,7 +1,8 @@
 import UIKit
 
 class BookCoverImageView: UIImageView {
-    // MARK: - Lifecycles
+    
+    // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -13,9 +14,9 @@ class BookCoverImageView: UIImageView {
     
     // MARK: - Helpers
     private func configure() {
-        layer.cornerRadius  = 10
-        clipsToBounds       = true
-        contentMode         = .scaleAspectFill
+        layer.cornerRadius = 10
+        clipsToBounds = true
+        contentMode = .scaleAspectFill
         translatesAutoresizingMaskIntoConstraints = false
     }
     
