@@ -92,7 +92,20 @@ final class SearchController: UIViewController {
         }
         
         guard let isbn = searchTextField.text else { return }
-        let url = API_URL + "\(isbn)"
+        let trimmedISBN = isbn.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        let isbn10Pattern = "^(?:\\d{9}X|\\d{10})$"
+        let isbn13Pattern = "^\\d{13}$"
+        
+        let isValidISBN10 = trimmedISBN.range(of: isbn10Pattern, options: .regularExpression) != nil
+        let isValidISBN13 = trimmedISBN.range(of: isbn13Pattern, options: .regularExpression) != nil
+        
+        guard isValidISBN10 || isValidISBN13 else {
+            self.presentAlertOnMainThread(title: "Error", message: "Please enter a valid ISBN-10 or ISBN-13 number.", buttonTitle: "Ok")
+            return
+        }
+        
+        let url = API_URL + "\(trimmedISBN)"
         
         APIService.shared.request(url, method: .get, parameters: nil, responseType: Book.self) { result in
             switch result {
@@ -102,8 +115,8 @@ final class SearchController: UIViewController {
                     bookController.book = book
                     self.navigationController?.pushViewController(bookController, animated: true)
                 }
-            case .failure(let error):
-                self.presentAlertOnMainThread(title: "Error", message: error.localizedDescription, buttonTitle: "Ok")
+            case .failure( _):
+                self.presentAlertOnMainThread(title: "Not Found", message: "The book was not found.\nPlease verify the ISBN and try again.", buttonTitle: "Ok")
             }
         }
     }

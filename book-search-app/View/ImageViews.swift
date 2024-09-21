@@ -18,6 +18,7 @@ class BookCoverImageView: UIImageView {
         clipsToBounds = true
         contentMode = .scaleAspectFill
         translatesAutoresizingMaskIntoConstraints = false
+        backgroundColor = .lightGray
     }
     
     func downloadImage(from urlString: String) {
