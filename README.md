@@ -2,20 +2,21 @@
 
 The app is built with `programmatic UIKit` and includes `custom UI components` such as labels, buttons, image views and views. It has custom implementations of `CollectionView` and `TableView` and is compatible with `Dark Mode`. The app features `Alamofire` for network communication, a `Persistence Manager` for local data handling.
 
-### Screens
+### 1. Screens
 
 <div style="float: left;">
     <img src="assets/1.png" style="width: 30%;" />
+    <img src="assets/2.png" style="width: 30%;" />
 </div>
 
-### :warning: Warning
+### 2. Warning
 
-Please note that this application includes two types of APIs for backend usage:
+Please note that this application includes `two types of APIs` for backend usage:
 
 - A real REST API: https://github.com/otegecmis/book-search-api
 - A mock API: https://github.com/otegecmis/book-search-mock-api
 
-### Installation
+### 3. Installation
 
 1. **Clone the repository**
 
