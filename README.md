@@ -1,17 +1,23 @@
 ## Book Search App
 
-The app is built with `programmatic UIKit` and includes `custom UI components` such as labels, buttons, image views and views. It has custom implementations of `CollectionView` and `TableView` and is compatible with `Dark Mode`. The app features `Alamofire` for network communication, a `Persistence Manager` for local data handling.
+The app is built with `programmatic UIKit` using the `MVC` architecture and includes `custom UI components` such as labels, buttons, image views and views. It has custom implementations of `CollectionView` and `TableView` and is compatible with `Dark Mode`. The app features `Alamofire` for network communication and a `Persistence Manager` for local data handling.
 
 ### 1. Screens
 
-<div style="float: left;">
-    <img src="assets/1.png" style="width: 30%;" />
-    <img src="assets/2.png" style="width: 30%;" />
-</div>
+1. **Dark Mode**
 
 <div style="float: left;">
-    <img src="assets/3.png" style="width: 30%;" />
-    <img src="assets/4.png" style="width: 30%;" />
+    <img src="assets/dark-mode/1.png" style="width: 30%;" />
+    <img src="assets/dark-mode/2.png" style="width: 30%;" />
+    <img src="assets/dark-mode/3.png" style="width: 30%;" />
+</div>
+
+2. **Light Mode**
+
+<div style="float: left;">
+    <img src="assets/light-mode/1.png" style="width: 30%;" />
+    <img src="assets/light-mode/2.png" style="width: 30%;" />
+    <img src="assets/light-mode/3.png" style="width: 30%;" />
 </div>
 
 ### 2. Warning
