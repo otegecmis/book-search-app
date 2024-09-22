@@ -24,8 +24,8 @@ The app is built with `programmatic UIKit` using the `MVC` architecture and incl
 
 Please note that this application includes `two types of APIs` for backend usage:
 
-- A real REST API: [otegecmis/book-search-api](https://github.com/otegecmis/book-search-api)
-- A mock API: [otegecmis/book-search-mock-api](https://github.com/otegecmis/book-search-mock-api)
+- [otegecmis/book-search-api](https://github.com/otegecmis/book-search-api)
+- [otegecmis/book-search-mock-api](https://github.com/otegecmis/book-search-mock-api)
 
 ### 3. Installation
 
