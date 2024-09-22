@@ -9,6 +9,11 @@ The app is built with `programmatic UIKit` and includes `custom UI components` s
     <img src="assets/2.png" style="width: 30%;" />
 </div>
 
+<div style="float: left;">
+    <img src="assets/3.png" style="width: 30%;" />
+    <img src="assets/4.png" style="width: 30%;" />
+</div>
+
 ### 2. Warning
 
 Please note that this application includes `two types of APIs` for backend usage:
