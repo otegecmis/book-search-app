@@ -33,5 +33,6 @@ class SearchTextField: UITextField {
         returnKeyType = .search
         placeholder = "ISBN Number"
         autocapitalizationType = .none
+        clearButtonMode = .always
     }
 }
