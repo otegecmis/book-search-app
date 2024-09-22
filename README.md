@@ -4,14 +4,20 @@ The app is built with `programmatic UIKit` and includes `custom UI components` s
 
 ### 1. Screens
 
-<div style="float: left;">
-    <img src="assets/1.png" style="width: 30%;" />
-    <img src="assets/2.png" style="width: 30%;" />
-</div>
+1. **Dark Mode**
 
 <div style="float: left;">
-    <img src="assets/3.png" style="width: 30%;" />
-    <img src="assets/4.png" style="width: 30%;" />
+    <img src="assets/dark-mode/1.png" style="width: 30%;" />
+    <img src="assets/dark-mode/2.png" style="width: 30%;" />
+    <img src="assets/dark-mode/3.png" style="width: 30%;" />
+</div>
+
+2. **Light Mode**
+
+<div style="float: left;">
+    <img src="assets/light-mode/1.png" style="width: 30%;" />
+    <img src="assets/light-mode/2.png" style="width: 30%;" />
+    <img src="assets/light-mode/3.png" style="width: 30%;" />
 </div>
 
 ### 2. Warning
