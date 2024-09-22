@@ -2,6 +2,10 @@
 
 The app is built with `programmatic UIKit` using the `MVC` architecture and includes `custom UI components` such as labels, buttons, image views and views. It has custom implementations of `CollectionView` and `TableView` and is compatible with `Dark Mode`. The app features `Alamofire` for network communication and a `Persistence Manager` for local data handling.
 
+### 0. Video Preview
+
+https://github.com/user-attachments/assets/83d7e6a6-2120-487f-97a7-7baba8a3db82
+
 ### 1. Screens
 
 1. **Dark Mode**
