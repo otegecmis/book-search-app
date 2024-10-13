@@ -1,6 +1,6 @@
 ## Book Search App
 
-The app is built with `programmatic UIKit` using the `MVC` architecture and includes `custom UI components` such as labels, buttons, image views and views. It has custom implementations of `CollectionView` and `TableView` and is compatible with `Dark Mode`. The app features `Alamofire` for network communication and a `Persistence Manager` for local data handling.
+This iOS app allows users to search for books by ISBN, view detailed information and save favorites. Built with `programmatic UIKit` in the `MVC` architecture, it features custom `reusable UI components` and supports both CollectionView and TableView. The app is fully compatible with `Dark Mode`, uses `Alamofire` for network communication and implements a `Persistence Manager` for local data storage.
 
 ### 0. Video Preview
 
