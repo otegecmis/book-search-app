@@ -14,7 +14,6 @@ class SearchTextField: UITextField {
     
     // MARK: - Helpers
     private func configure() {
-        translatesAutoresizingMaskIntoConstraints = false
         
         layer.cornerRadius = 20
         layer.borderWidth = 1

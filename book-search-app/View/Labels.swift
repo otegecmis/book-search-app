@@ -26,7 +26,6 @@ class BodyLabel: UILabel {
         minimumScaleFactor = 0.75
         lineBreakMode = .byWordWrapping
         
-        translatesAutoresizingMaskIntoConstraints = false
     }
 }
 
@@ -56,7 +55,5 @@ class TitleLabel: UILabel {
         adjustsFontSizeToFitWidth = true
         minimumScaleFactor = 0.9
         lineBreakMode = .byTruncatingTail
-        
-        translatesAutoresizingMaskIntoConstraints = false
     }
 }

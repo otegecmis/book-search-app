@@ -1,4 +1,5 @@
 import UIKit
+import SnapKit
 
 class FavoritesCell: UICollectionViewCell {
     
@@ -25,11 +26,11 @@ class FavoritesCell: UICollectionViewCell {
         addSubview(bookCoverImageView)
         let padding: CGFloat = 8
         
-        NSLayoutConstraint.activate([
-            bookCoverImageView.topAnchor.constraint(equalTo: topAnchor, constant: padding),
-            bookCoverImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: padding),
-            bookCoverImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding),
-            bookCoverImageView.heightAnchor.constraint(equalTo: bookCoverImageView.widthAnchor, multiplier: 1.5),
-        ])
+        bookCoverImageView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(padding)
+            make.leading.equalToSuperview().offset(padding)
+            make.trailing.equalToSuperview().inset(padding)
+            make.height.equalTo(bookCoverImageView.snp.width).multipliedBy(1.5)
+        }
     }
 }

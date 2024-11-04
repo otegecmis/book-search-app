@@ -22,7 +22,6 @@ class ActionButton: UIButton {
     
     // MARK: - Helpers
     private func configure() {
-        translatesAutoresizingMaskIntoConstraints = false
         
         layer.cornerRadius = 10
         setTitleColor(.white, for: .normal)

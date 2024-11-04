@@ -1,4 +1,5 @@
 import UIKit
+import SnapKit
 
 final class SearchController: UIViewController {
     
@@ -12,7 +13,7 @@ final class SearchController: UIViewController {
     }
     
     let containerView = UIView()
-    var containerViewCenterYConstraint: NSLayoutConstraint!
+    var containerViewCenterYConstraint: Constraint?
     
     // MARK: - Lifecycles
     override func viewDidLoad() {
@@ -41,9 +42,6 @@ final class SearchController: UIViewController {
         containerView.addSubview(searchTextField)
         containerView.addSubview(searchButton)
         
-        containerView.translatesAutoresizingMaskIntoConstraints = false
-        logoImageView.translatesAutoresizingMaskIntoConstraints = false
-        
         if let logoImage = UIImage(named: "Logo") {
             logoImageView.image = logoImage
         } else {
@@ -53,32 +51,34 @@ final class SearchController: UIViewController {
         
         logoImageView.contentMode = .scaleAspectFill
         
-        NSLayoutConstraint.activate([
-            logoImageView.topAnchor.constraint(equalTo: containerView.topAnchor),
-            logoImageView.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
-            logoImageView.heightAnchor.constraint(equalToConstant: 100),
-            logoImageView.widthAnchor.constraint(equalToConstant: 100),
-            
-            searchTextField.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 25),
-            searchTextField.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-            searchTextField.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-            searchTextField.heightAnchor.constraint(equalToConstant: 50),
-            
-            searchButton.topAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: 10),
-            searchButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-            searchButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-            searchButton.heightAnchor.constraint(equalToConstant: 50),
-            searchButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
-        ])
+        logoImageView.snp.makeConstraints { make in
+            make.top.equalTo(containerView.snp.top)
+            make.centerX.equalTo(containerView.snp.centerX)
+            make.height.equalTo(100)
+            make.width.equalTo(100)
+        }
         
-        containerViewCenterYConstraint = containerView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        searchTextField.snp.makeConstraints { make in
+            make.top.equalTo(logoImageView.snp.bottom).offset(25)
+            make.leading.equalTo(containerView.snp.leading)
+            make.trailing.equalTo(containerView.snp.trailing)
+            make.height.equalTo(50)
+        }
         
-        NSLayoutConstraint.activate([
-            containerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            containerViewCenterYConstraint,
-            containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
-        ])
+        searchButton.snp.makeConstraints { make in
+            make.top.equalTo(searchTextField.snp.bottom).offset(10)
+            make.leading.equalTo(containerView.snp.leading)
+            make.trailing.equalTo(containerView.snp.trailing)
+            make.height.equalTo(50)
+            make.bottom.equalTo(containerView.snp.bottom)
+        }
+        
+        containerView.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            containerViewCenterYConstraint = make.centerY.equalToSuperview().constraint
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().inset(20)
+        }
         
         searchTextField.delegate = self
         searchButton.addTarget(self, action: #selector(searchBook), for: .touchUpInside)
@@ -146,7 +146,7 @@ extension SearchController {
         guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
         let keyboardHeight = keyboardSize.height
         
-        containerViewCenterYConstraint.constant = -keyboardHeight / 2
+        containerViewCenterYConstraint?.update(offset: -keyboardHeight / 2)
         
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
@@ -154,7 +154,7 @@ extension SearchController {
     }
     
     @objc func keyboardWillHide(_ notification: Notification) {
-        containerViewCenterYConstraint.constant = 0
+        containerViewCenterYConstraint?.update(offset: 0)
         
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()

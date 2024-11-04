@@ -1,4 +1,5 @@
 import UIKit
+import SnapKit
 
 final class BookController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -66,20 +67,19 @@ final class BookController: UIViewController, UITableViewDelegate, UITableViewDa
         view.addSubview(bookImageView)
         view.addSubview(tableView)
         
-        bookImageView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.translatesAutoresizingMaskIntoConstraints = false
+        bookImageView.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(20)
+            make.centerX.equalTo(view.safeAreaLayoutGuide.snp.centerX)
+            make.height.equalTo(300)
+            make.width.equalTo(200)
+        }
         
-        NSLayoutConstraint.activate([
-            bookImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            bookImageView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            bookImageView.heightAnchor.constraint(equalToConstant: 300),
-            bookImageView.widthAnchor.constraint(equalToConstant: 200),
-            
-            tableView.topAnchor.constraint(equalTo: bookImageView.bottomAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-        ])
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(bookImageView.snp.bottom)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            make.leading.equalTo(view.snp.leading)
+            make.trailing.equalTo(view.snp.trailing)
+        }
         
         bookInformations.append(contentsOf: [
             ["Title", book.title],

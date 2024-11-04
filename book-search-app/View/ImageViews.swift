@@ -17,7 +17,6 @@ class BookCoverImageView: UIImageView {
         layer.cornerRadius = 10
         clipsToBounds = true
         contentMode = .scaleAspectFill
-        translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = .lightGray
     }
     
