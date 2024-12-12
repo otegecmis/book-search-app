@@ -1,7 +1,7 @@
 ## Book Search App
 
-- An iOS app developed with **Swift** to search books by ISBN, view details and save favorites.
-- Built with **UIKit (Programmatic)**, using the **MVC** architecture and includes custom reusable UI components compatible with Dark Mode.
+- An iOS app developed with **Swift** and **UIKit (Programmatic)** to search for books by ISBN, view details and save favorites.
+- It uses the **MVC** architecture and includes custom reusable UI components compatible with Dark Mode.
 - Used **SnapKit** for layout setup.
 - Integrated **Alamofire** for network communication and implemented local data caching with **UserDefaults** to reduce unnecessary requests and improve performance.
 
