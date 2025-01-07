@@ -54,9 +54,9 @@ cd book-search-app
 open book-search-app.xcodeproj
 ```
 
-4. **Set up the API URL**
+4. **Configure the Endpoints**
 
-Go to the `Constants.swift` file and fill in the `API_URL` variable.
+Navigate to `Utils/Constants.swift` and in the `Endpoints` enum, update the `baseURL` and if needed, modify the return path in `bookSearch` function according to your API structure.
 
 5. **Run the app**
 
