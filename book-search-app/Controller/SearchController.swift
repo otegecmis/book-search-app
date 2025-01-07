@@ -105,7 +105,7 @@ final class SearchController: UIViewController {
             return
         }
         
-        let url = "\(API_URL)/\(trimmedISBN)"
+        let url = Endpoints.bookSearch(ISBN: trimmedISBN)
 
         APIService.shared.request(url, method: .get, parameters: nil, responseType: Book.self) { [weak self] result in
             guard let self = self else { return }
