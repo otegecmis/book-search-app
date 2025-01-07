@@ -1,6 +1,12 @@
 import UIKit
 import Alamofire
 
+enum APIError: String, Error {
+    case networkError = "Please check your connection."
+    case invalidResponse = "Invalid server response."
+    case notFound = "The book was not found."
+}
+
 class APIService {
     
     // MARK: - Properties
@@ -15,16 +21,19 @@ class APIService {
     }
     
     // MARK: - Helpers
-    func request<T: Decodable>(_ url: String, method: HTTPMethod, parameters: Parameters?, responseType: T.Type, completion: @escaping (Result<T, AFError>) -> Void) {
+    func request<T: Decodable>(_ url: String, method: HTTPMethod, parameters: Parameters?, responseType: T.Type, completion: @escaping (Result<T, Error>) -> Void) {
         session.request(url, method: method, parameters: parameters, encoding: JSONEncoding.default).validate().responseDecodable(of: T.self) { response in
             switch response.result {
             case .success(let value):
                 completion(.success(value))
             case .failure(let error):
-                if let data = response.data, let json = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) {
-                    print("Response data: \(json)")
+                if let statusCode = response.response?.statusCode, statusCode == 404 {
+                    completion(.failure(APIError.notFound))
+                } else if let underlyingError = error.underlyingError as? URLError {
+                    completion(.failure(APIError.networkError))
+                } else {
+                    completion(.failure(APIError.invalidResponse))
                 }
-                completion(.failure(error))
             }
         }
     }
