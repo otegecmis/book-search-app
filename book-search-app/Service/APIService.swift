@@ -18,13 +18,22 @@ class APIService {
     private let monitor = NWPathMonitor()
     private let monitorQueue = DispatchQueue(label: "NetworkMonitor")
     
+    private var cacheDirectory: URL {
+        FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0].appendingPathComponent("ImageCache")
+    }
+    
     // MARK: - Initializers
     private init() {
         session = Self.createSession()
         setupNetworkMonitoring()
+        createCacheDirectory()
     }
     
     // MARK: - Helpers
+    private func createCacheDirectory() {
+        try? FileManager.default.createDirectory(at: cacheDirectory, withIntermediateDirectories: true)
+    }
+    
     private static func createSession() -> Session {
         let configuration = URLSessionConfiguration.default
         configuration.timeoutIntervalForRequest = 20
@@ -78,6 +87,14 @@ class APIService {
             return
         }
         
+        let imagePath = cacheDirectory.appendingPathComponent(cacheKey.hash.description)
+        
+        if let diskCachedImage = UIImage(contentsOfFile: imagePath.path) {
+            cache.setObject(diskCachedImage, forKey: cacheKey)
+            completion(diskCachedImage)
+            return
+        }
+        
         session.request(urlString)
             .validate()
             .responseData { response in
@@ -85,6 +102,7 @@ class APIService {
                 case .success(let data):
                     if let image = UIImage(data: data) {
                         self.cache.setObject(image, forKey: cacheKey)
+                        try? data.write(to: imagePath)
                         completion(image)
                     } else {
                         completion(nil)
