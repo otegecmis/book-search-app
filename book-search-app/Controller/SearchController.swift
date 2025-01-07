@@ -105,9 +105,11 @@ final class SearchController: UIViewController {
             return
         }
         
-        let url = API_URL + "\(trimmedISBN)"
-        
-        APIService.shared.request(url, method: .get, parameters: nil, responseType: Book.self) { result in
+        let url = "\(API_URL)/\(trimmedISBN)"
+
+        APIService.shared.request(url, method: .get, parameters: nil, responseType: Book.self) { [weak self] result in
+            guard let self = self else { return }
+            
             switch result {
             case .success(let book):
                 DispatchQueue.main.async {
@@ -115,8 +117,12 @@ final class SearchController: UIViewController {
                     bookController.book = book
                     self.navigationController?.pushViewController(bookController, animated: true)
                 }
-            case .failure( _):
-                self.presentAlertOnMainThread(title: "Not Found", message: "The book was not found.\nPlease verify the ISBN and try again.", buttonTitle: "Ok")
+            case .failure(let error):
+                if let apiError = error as? APIError {
+                    self.presentAlertOnMainThread(title: "Error", message: apiError.rawValue, buttonTitle: "Ok")
+                } else {
+                    self.presentAlertOnMainThread(title: "Error", message: "An unexpected error occurred.", buttonTitle: "Ok")
+                }
             }
         }
     }
